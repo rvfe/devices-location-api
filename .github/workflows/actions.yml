@@ -1,44 +1,44 @@
-name: Build and Deploy Code
+# name: Tests
 
-on: [push, pull_request]
+# on: [push, pull_request]
 
-jobs:
-  build:
-    environment:
-      name: testes
-    env:
-      DATABASE_HOSTNAME: ${{secrets.DATABASE_HOSTNAME}}
-      DATABASE_PORT: ${{secrets.DATABASE_PORT}}
-      DATABASE_PASSWORD: ${{secrets.DATABASE_PASSWORD}}
-      DATABASE_NAME: ${{secrets.DATABASE_NAME}}
-      DATABASE_USERNAME: ${{secrets.DATABASE_USERNAME}}
+# jobs:
+#   build:
+#     environment:
+#       name: testes
+#     env:
+#       DATABASE_HOSTNAME: ${{secrets.DATABASE_HOSTNAME}}
+#       DATABASE_PORT: ${{secrets.DATABASE_PORT}}
+#       DATABASE_PASSWORD: ${{secrets.DATABASE_PASSWORD}}
+#       DATABASE_NAME: ${{secrets.DATABASE_NAME}}
+#       DATABASE_USERNAME: ${{secrets.DATABASE_USERNAME}}
 
-    services:
-      postgres:
-        image: postgres
-        env:
-          POSTGRES_PASSWORD: password123
-          POSTGRES_DB: fastapi_test
-        # ports:
-        #   - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-    runs-on: ubuntu-latest
-    steps:
-      - name: pulling git repo
-        uses: actions/checkout@v2
-      - name: Install python version 3.9
-        uses: actions/setup-python@v2
-        with:
-          python-version: "3.10.10"
-      - name: update pip
-        run: python -m pip install --upgrade pip
-      - name: install all dependencies
-        run: pip install -r requirements.txt
-      - name: test with pytest
-        run: |
-          pip install pytest
-          pytest
+#     services:
+#       postgres:
+#         image: postgres
+#         env:
+#           POSTGRES_PASSWORD: fastapi
+#           POSTGRES_DB: fastapi_test
+#         # ports:
+#         #   - 5432:5432
+#         options: >-
+#           --health-cmd pg_isready
+#           --health-interval 10s
+#           --health-timeout 5s
+#           --health-retries 5
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: pulling git repo
+#         uses: actions/checkout@v2
+#       - name: Install python version 3.9
+#         uses: actions/setup-python@v2
+#         with:
+#           python-version: "3.10.10"
+#       - name: update pip
+#         run: python -m pip install --upgrade pip
+#       - name: install all dependencies
+#         run: pip install -r requirements.txt
+#       - name: test with pytest
+#         run: |
+#           pip install pytest
+#           pytest
