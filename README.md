@@ -34,12 +34,23 @@ Para rodar o projeto, basta clonar o repositório e executar o comando:
 docker-compose up -d --build
 ```
 
+Para rodar o projeto, estando na raiz do projeto, execute:
+
+```
+uvicorn app.main:app --reload
+```
+
 Para rodar os testes, após clonar o projeto, execute o comando
 
 ```
 pytest
 ```
 
+O projeto é acessado em: 
+
+```
+http://127.0.0.1:8000/
+```
 
 A doc poderá ser encontrada em 
 
